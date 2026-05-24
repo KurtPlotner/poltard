@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+        #gameUI {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        #canvas {
+            border: 1px solid black;
+            image-rendering: pixelated;
+            width: 480px;
+            height: 480px;
+        }
+
+        #characterList {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            border: 1px solid black;
+            padding: 6px;
+
+            /* auto height based on contents */
+            height: auto;
+            min-width: 120px;
+            background-color: darkgrey;
+        }
+        .character-portrait {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            padding: 4px;
+            background: black;
+
+            border: 2px solid #444;          /* fixed border size */
+            box-sizing: border-box;           /* prevents size change */
+            cursor: pointer;
+        }
+        .character-portrait:hover {
+            outline: 6px solid lightblue;
+            outline-offset: -3px; /* keeps it tight */
+        }
+        .portrait-sprite {
+            width: 80px;  /* desired display size */
+            height: 80px;
+
+            background-image: url("Asset.png");
+            background-repeat: no-repeat;
+
+            /* scale the full sheet to match display */
+            background-size: 15360px 8640px;  /* total sheet size, keep 1:1 if no scaling of sheet */
+
+            image-rendering: pixelated;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameUI">
+        <canvas id="canvas" width="120" height="120"></canvas>
+
+        <div id="characterList">
+            <div class="character-portrait">
+                <div class="portrait-sprite" style="background-position: 0px 0px;"></div>
+                <span>Character Name</span>
+            </div>
+        </div>
+        <div id="StatsList">
+            <p>Health: <span id="HealthLabel"></span></p>
+            <p>Mana: <span id="ManaLabel"></span></p>
+            <p>Vitality: <span id="VitalityLabel"></span></p>
+            <p>Strenght: <span id="StrenghtLabel"></span></p>
+            <p>Agility: <span id="AgilityLabel"></span></p>
+            <p>Charisma: <span id="CharismaLabel"></span></p>
+            <p>Perception: <span id="PerceptionLabel"></span></p>
+            <p>Wisdom: <span id="WisdomLabel"></span></p>
+            <p>Intelligence: <span id="IntelligenceLabel"></span></p>
+            <p>Movement Points: <span id="MovementPointsLabel"></span></p>
+        </div> 
+    </div>
+    <button onclick="game_loop.nextPhase()">Next Phase</button>
+    <button onclick="character_map.get(current_character)?.move_check()">Move</button>
+    <p id="turn_phase_label"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
