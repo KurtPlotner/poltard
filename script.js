@@ -194,7 +194,6 @@ function draw_grid() {
 
 
 
-
 const phases = new Phases()
 const game_loop = new GameLoop()
 
