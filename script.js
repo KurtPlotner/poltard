@@ -3,6 +3,7 @@ import * as entity from "modules/entity.js"
 import * as pathfinder from "modules/pathfinder.js"
 import * as tile from "modules/tile.js"
 
+
 //VARIABLES
 const canvas = document.getElementById("canvas");
 const canvas_width = canvas.width;
